@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Tarefa {
+  id          Int      @id @default(autoincrement())
+  titulo      String
+  concluida   Boolean  @default(false)
+  criadaEm    DateTime @default(now())
+  deletadoEm  DateTime? // <- soft delete
+}
